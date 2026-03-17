@@ -4,7 +4,7 @@ schemaVersion = "0.0.1"
 
 [package]
 namespace = "adamant"
-name = "adamant-SkipRunEndCutscene"
+name = "SkipRunEndCutscene"
 versionNumber = "1.0.0"
 description = "Skip the end-of-run cutscene. The victory screen will still appear, but you will be immediately returned to the main menu."
 websiteUrl = "https://github.com/maybe-adamant/h2-pack-SkipRunEndCutscene"
