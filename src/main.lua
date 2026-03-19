@@ -8,7 +8,7 @@ game = rom.game
 modutil = mods['SGG_Modding-ModUtil']
 chalk = mods['SGG_Modding-Chalk']
 reload = mods['SGG_Modding-ReLoad']
-local lib = mods['adamant-Modpack_Lib'].public
+local lib = mods['adamant-Modpack_Lib']
 
 config = chalk.auto('config.lua')
 public.config = config
@@ -38,7 +38,7 @@ end
 
 local function registerHooks()
     modutil.mod.Path.Wrap("EndEarlyAccessPresentation", function(baseFunc)
-        if not config.Enabled then return baseFunc() end
+        if not lib.isEnabled(config) then return baseFunc() end
 
         AddInputBlock({ Name = "EndEarlyAccessPresentation" })
         SetPlayerInvulnerable("EndEarlyAccessPresentation")
@@ -82,11 +82,12 @@ modutil.once_loaded.game(function()
     loader.load(function()
         import_as_fallback(rom.game)
         registerHooks()
-        if config.Enabled then apply() end
-        if public.definition.dataMutation and not mods['adamant-Core'] then
+        if lib.isEnabled(config) then apply() end
+        if public.definition.dataMutation and not mods['adamant-Modpack_Core'] then
             SetupRunData()
         end
     end)
 end)
 
-lib.standaloneUI(public.definition, config, apply, restore)
+local uiCallback = lib.standaloneUI(public.definition, config, apply, restore)
+rom.gui.add_to_menu_bar(uiCallback)
