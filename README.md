@@ -5,7 +5,7 @@
 ## Features
 
 - Immediately skips the end-of-run presentation.
-- Gets you back to the House of Hades faster after a successful run.
+- Gets you back to the Crossroads faster after a successful run.
 
 ## Installation
 
