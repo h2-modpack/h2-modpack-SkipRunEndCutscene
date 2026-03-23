@@ -1,5 +1,5 @@
 std = "lua52"
-max_line_length = 120
+max_line_length = 140
 globals = {
     "rom",
     "public",
@@ -8,7 +8,9 @@ globals = {
     "game",
     "chalk",
     "reload",
-    "_PLUGIN"
+    "_PLUGIN",
+    "CurrentRun",
+
     }
 read_globals = {
     "imgui",
@@ -31,7 +33,6 @@ read_globals = {
     "RemoveInputBlock",
     "thread",
     "Kill",
-    "CurrentRun",
     "FadeIn",
     "SetupRunData"
     }
