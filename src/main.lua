@@ -39,7 +39,7 @@ end
 
 local function registerHooks()
     modutil.mod.Path.Wrap("EndEarlyAccessPresentation", function(baseFunc)
-        if not lib.isEnabled(config) then return baseFunc() end
+        if not lib.isEnabled(config, public.definition.modpack) then return baseFunc() end
 
         AddInputBlock({ Name = "EndEarlyAccessPresentation" })
         SetPlayerInvulnerable("EndEarlyAccessPresentation")
@@ -83,8 +83,8 @@ modutil.once_loaded.game(function()
     loader.load(function()
         import_as_fallback(rom.game)
         registerHooks()
-        if lib.isEnabled(config) then apply() end
-        if public.definition.dataMutation and not mods['adamant-Modpack_Core'] then
+        if lib.isEnabled(config, public.definition.modpack) then apply() end
+        if public.definition.dataMutation and not lib.isCoordinated(public.definition.modpack) then
             SetupRunData()
         end
     end)
